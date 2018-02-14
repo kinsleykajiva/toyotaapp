@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="8dp"
+
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <ImageView
+            android:id="@+id/imgthumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="visible"
+
+
+            />
+        <com.aspha.toyota.cwidgets.customfonts.MyTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:ellipsize="end"
+            android:lines="1"
+            android:padding="5dp"
+            android:text="Snames Vae,Clabula byssus?eerw ytu"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <View
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/grey"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <com.aspha.toyota.cwidgets.customfonts.MyTextView
+            android:id="@+id/txtdesciption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="7dp"
+            android:text="description"
+            android:textColor="@color/grey" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

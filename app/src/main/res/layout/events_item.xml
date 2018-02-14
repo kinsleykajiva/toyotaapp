@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+                android:focusable="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:attr/selectableItemBackground">
+    <ImageView
+        android:id="@+id/thumbnail_image"
+        android:layout_width="40dp"
+        android:layout_height="86dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+android:src="@drawable/backup_load"
+        android:layout_marginRight="16dp" />
+
+    <LinearLayout
+        android:id="@+id/det"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/thumbnail_image"
+        android:orientation="vertical">
+
+        <com.aspha.toyota.cwidgets.customfonts.MyTextView
+            android:id="@+id/recycle_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            tools:text="Title" />
+
+        <com.aspha.toyota.cwidgets.customfonts.MyTextView
+            android:id="@+id/recycle_date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="13dp"
+            tools:text="Date and Time" />
+
+        <com.aspha.toyota.cwidgets.customfonts.MyTextView
+            android:id="@+id/recycle_repeat_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="13dp"
+            tools:text="Repeat No and Type" />
+
+    </LinearLayout>
+    <View
+        android:layout_below="@+id/det"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/grey"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</RelativeLayout>

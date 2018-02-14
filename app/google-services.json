@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "648791700193",
+    "firebase_url": "https://toyota-app-b445b.firebaseio.com",
+    "project_id": "toyota-app-b445b",
+    "storage_bucket": "toyota-app-b445b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648791700193:android:f56f72deb07091df",
+        "android_client_info": {
+          "package_name": "com.aspha.toyota"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648791700193-nc67mhkpidotamt3u9rs5aefhku84n92.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aspha.toyota",
+            "certificate_hash": "645e969bb9afca84ccae655fad600899c5c9e424"
+          }
+        },
+        {
+          "client_id": "648791700193-fdl7lh8kus4v12tc2bkiahmrhivic17d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCICXSo_TWynZFkcyNXYNKARD7VsH5-t1Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648791700193-fdl7lh8kus4v12tc2bkiahmrhivic17d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

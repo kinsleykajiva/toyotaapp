@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aspha.toyota.activities.Profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.aspha.toyota.cwidgets.customfonts.MyTextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Users Details"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingRight="5dp">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity=""
+                    android:text="Name"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:inputType="textPostalAddress"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+
+                    android:text="Surname"
+
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Surname"
+                    android:inputType="textPersonName"
+
+                    android:maxLength="11"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingRight="5dp">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity=""
+                    android:text="Cell"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/celle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cell"
+                    android:inputType="phone"
+
+                    android:paddingLeft="9dp"
+                    android:paddingRight="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+
+                    android:text="@string/email"
+
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="9dp"
+
+                    android:paddingRight="10dp"
+                    android:text="@string/email"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+                android:paddingRight="5dp">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity=""
+                    android:text="Address"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Adress"
+                    android:inputType="text|textPostalAddress"
+
+
+                    android:paddingLeft="9dp"
+                    android:paddingRight="10dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+
+        <Button
+            android:id="@+id/buttonProceed"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/curvey_buttonaccent"
+            android:text="Save"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>
