@@ -46,8 +46,6 @@
                 android:indeterminateTintMode="src_in"
                 android:visibility="gone"/>
 
-
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,6 +81,69 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:hint="Registration Number"
+                    android:inputType="text"
+
+                    android:padding="10dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/chasisNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="Chasis Number"
+                    android:inputType="text"
+
+                    android:padding="10dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/engineNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="Engine Number"
+                    android:inputType="text"
+
+                    android:padding="10dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryDark"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+                <com.aspha.toyota.cwidgets.customfonts.MyEditText
+                    android:id="@+id/mileage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:hint="Mileage"
                     android:inputType="text"
 
                     android:padding="10dp"

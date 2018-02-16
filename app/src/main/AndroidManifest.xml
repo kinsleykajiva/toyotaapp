@@ -143,7 +143,10 @@
         </activity>
         <activity android:name=".activities.AfterSales">
         </activity>
-        <activity android:name=".activities.RequestService">
+        <activity
+            android:name=".activities.RequestService"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
     </application>
 

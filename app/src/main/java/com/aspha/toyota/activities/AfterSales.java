@@ -2,6 +2,7 @@ package com.aspha.toyota.activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,10 @@ import android.view.View;
 import com.aspha.toyota.R;
 import com.aspha.toyota.fragments.Fragements_services;
 import com.aspha.toyota.fragments.Fragment_parts;
+import com.aspha.toyota.fragments.Fragment_partsAftersales;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AfterSales extends BaseActivity {
     private ViewPager pager;
@@ -30,7 +35,6 @@ public class AfterSales extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("After Sales");
         pager = findViewById(R.id.viewpager);
-        pager.setVisibility( View.VISIBLE);
         Tabslayout= findViewById(R.id.tablayout);
 
     }
@@ -39,26 +43,52 @@ public class AfterSales extends BaseActivity {
     protected void initListerners () {
 
     }
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<> ();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new Fragements_services(), "Services");
+        adapter.addFrag(new Fragment_partsAftersales(), "Parts");
+
+        viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setCurrentItem( 0 );
+
+    }
     @Override
     protected void setViewsValues () {
-        Tabslayout.addTab(Tabslayout.newTab().setText("Services"));
-        Tabslayout.addTab(Tabslayout.newTab().setText("Parts"));
-        pager.setAdapter(new FragmentPagerAdapter (getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                if(position==0){
-                    return new Fragements_services ();
-                }else{
-                    return new Fragment_parts ();
-                }
-            }
+        setupViewPager(pager);
+        Tabslayout.setupWithViewPager(pager);
+        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(Tabslayout));
 
-            @Override
-            public int getCount() {
-                return 2;
-            }
-        });
+
     }
 
     @Override

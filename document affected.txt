@@ -1,0 +1,13 @@
+
+Instruments
+Technical Expertise  
+Software Requirements
+
+Hardware Specifications
+Functional requirements
+Non-functional requirements
+
+4.1 Introduction
+4.2 System design
+Program Pseudo Code
+Adding a new User’s details, 

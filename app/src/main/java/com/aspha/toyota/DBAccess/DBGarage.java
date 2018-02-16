@@ -11,11 +11,33 @@ public class DBGarage  extends RealmObject{
     private String modelName;
     private String RegNumber;
     private String email;
+    private String chasisNumber , engineNumber , mileage;
     private String date_;
 
 
+    public String getChasisNumber () {
+        return chasisNumber;
+    }
 
+    public void setChasisNumber (String chasisNumber) {
+        this.chasisNumber = chasisNumber;
+    }
 
+    public String getEngineNumber () {
+        return engineNumber;
+    }
+
+    public void setEngineNumber (String engineNumber) {
+        this.engineNumber = engineNumber;
+    }
+
+    public String getMileage () {
+        return mileage;
+    }
+
+    public void setMileage (String mileage) {
+        this.mileage = mileage;
+    }
 
     public String getDate_ () {
         return date_;

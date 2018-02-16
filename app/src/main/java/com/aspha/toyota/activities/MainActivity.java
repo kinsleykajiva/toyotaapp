@@ -16,6 +16,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,14 +27,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aspha.toyota.DBAccess.Preffs;
 import com.aspha.toyota.R;
-import com.aspha.toyota.mServices.MyJobService;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
+
 
 import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.SEND_SMS;
@@ -44,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MenuItem nav_log, nav_profile;
     private Context context = MainActivity.this;
     private Preffs preffs;
+    private TextView logged;
     private Boolean exit = false;
     private Menu menu;
     private Button btnBookService, btnShowRoom, btnShowWebsite, btnShowDelears, btnCustomerCare, btnRecovery ,btnAfterSales;
@@ -178,6 +178,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById ( R.id.nav_view );
         navigationView.setNavigationItemSelectedListener ( this );
+       View headerLayout = LayoutInflater.from(context).inflate(R.layout.nav_header_main, null);
+        navigationView.addHeaderView(headerLayout);
+        logged = headerLayout.findViewById(R.id.logged);
         btnBookService = findViewById ( R.id.btnBookService );
         btnShowRoom = findViewById ( R.id.btnShowRoom );
         btnShowWebsite = findViewById ( R.id.btnShowWebsite );
@@ -191,11 +194,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_profile = menu.findItem ( R.id.nav_profile );
         nav_profile.setVisible ( preffs.checkIfLoggedIn () );
         nav_log.setTitle ( preffs.checkIfLoggedIn () ? "Log Out" : "Log In" );
-
+        logged.setText ( preffs.checkIfLoggedIn () ? preffs.getUSER_EMAIL () : "Not Logged in." );
 
         btnBookService.setText ( preffs.checkIfLoggedIn () ? "My Garage" : "Book A Service" );
 
-
+        if ( ! preffs.checkIfLoggedIn () ) {
+            btnAfterSales.setVisibility ( View.GONE );
+        }
     }
 
     @Override

@@ -47,7 +47,8 @@ public class CRUD {
         return retVal;
     }
 
-    public static void saveVehicle (String modelName, String regNumber, String user) {
+    public static void saveVehicle (String modelName, String regNumber, String user ,String chasisNumber ,
+                                    String engineNumber , String mileage) {
         String date = new SimpleDateFormat ( "yyyy/MM/dd" ).format ( new Date () );
         new Thread ( () -> {
 
@@ -60,6 +61,9 @@ public class CRUD {
             rw.setDate_ ( date );
             rw.setModelName ( modelName );
             rw.setRegNumber ( regNumber );
+            rw.setChasisNumber ( chasisNumber );
+            rw.setEngineNumber ( engineNumber );
+            rw.setMileage ( mileage );
 
             rw.setID (
                     (results.isEmpty () && results.size () < 1) ? 0 : (results.max ( "ID" ).intValue () + 1)
@@ -128,6 +132,33 @@ public class CRUD {
             realm.close ();
         } ).start ();
     }
+
+    public static void saveDBService (String email, String regNumber , String comment ,  String date , String typee) {
+
+
+        new Thread ( () -> {
+
+            Realm realm = Realm.getDefaultInstance ();
+            RealmResults < DBService > results = realm.where ( DBService.class ).findAll ();
+
+            realm.beginTransaction ();
+            DBService rw = realm.createObject ( DBService.class );
+            rw.setCarReg ( regNumber );
+            rw.setComment ( comment );
+            rw.setDatePicked ( date );
+            rw.setServiceType ( typee );
+            rw.setEmail ( email );
+
+
+            rw.setId (
+                    (results.isEmpty () && results.size () < 1) ? 0 : (results.max ( "id" ).intValue () + 1)
+            );
+
+            realm.commitTransaction ();
+            realm.close ();
+        } ).start ();
+    }
+
 
     public static void saveEvent (List<DBEvents> ev) {
 

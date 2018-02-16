@@ -9,8 +9,16 @@ import io.realm.RealmObject;
 public class DBService extends RealmObject {
 
     private int id;
-    private String carReg , comment , datePicked , serviceType;
 
+    private String carReg , comment , datePicked , serviceType , email;
+
+    public String getEmail () {
+        return email;
+    }
+
+    public void setEmail (String email) {
+        this.email = email;
+    }
 
     public int getId () {
         return id;

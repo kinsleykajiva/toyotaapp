@@ -37,14 +37,45 @@ public class NetGet {
             if(response.isSuccessful()){
 
                 String mess = response.body().string();
-                //Log.e ( "xxx", "saveToken: "+ mess  );
+
                 json=(new JSONObject(mess));
                 Rs=json.getString("message");
             }
         }catch(IOException | JSONException e) {e.printStackTrace();}
         return Rs;
     }
+    public static String requestParts(String message){
+        String Rs="";
+        OkHttpClient client = new OkHttpClient();
+        JSONObject json;
 
+        Request request = new Request.Builder().url(MAIN_URL + "enquireparts.php?"+message).build();
+        try {
+            Response response = client.newCall(request).execute();
+            if(response.isSuccessful()){
+                String mess = response.body().string();
+                json=(new JSONObject(mess));
+                Rs=json.getString("message");
+            }
+        }catch(IOException | JSONException e) {e.printStackTrace();}
+        return Rs;
+    }
+    public static String bookeService(String message){
+        String Rs="";
+        OkHttpClient client = new OkHttpClient();
+        JSONObject json;
+
+        Request request = new Request.Builder().url(MAIN_URL + "bookservice.php?"+message).build();
+        try {
+            Response response = client.newCall(request).execute();
+            if(response.isSuccessful()){
+                String mess = response.body().string();
+                json=(new JSONObject(mess));
+                Rs=json.getString("message");
+            }
+        }catch(IOException | JSONException e) {e.printStackTrace();}
+        return Rs;
+    }
     public static  List<DBEvents > fetchEvent(String id){
         List<DBEvents > op = null;
 

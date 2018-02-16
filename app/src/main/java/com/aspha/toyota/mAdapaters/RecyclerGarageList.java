@@ -45,8 +45,9 @@ public class RecyclerGarageList extends RecyclerView.Adapter<RecyclerGarageList.
     public void onBindViewHolder (CustomViewHolder holder, int position) {
         DBGarage feeditem = results.get ( position );
 
-        holder.txtModel.setText ( "Model: "+feeditem.getModelName ()  );
-        holder.descrp.setText ("Reg-Number: "+feeditem.getRegNumber ());
+        holder.txtModel.setText ( "Model: "+feeditem.getModelName () + ", Chasis Number:" + feeditem.getChasisNumber () );
+        holder.descrp.setText ("Reg-Number: "+feeditem.getRegNumber () + ", Engine Number :"+feeditem.getEngineNumber ()
+                + " \nMileage:" +feeditem.getMileage ());
 
     }
     public void update(RealmResults<DBGarage> feedItemList) {

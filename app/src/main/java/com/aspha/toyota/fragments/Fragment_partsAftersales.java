@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aspha.toyota.DBAccess.DBGarage;
-import com.aspha.toyota.DBAccess.DBService;
 import com.aspha.toyota.R;
 import com.aspha.toyota.activities.RequestService;
-import com.aspha.toyota.activities.VihicleReadPage;
 import com.aspha.toyota.cwidgets.MyRecyclerItemClickListener;
 import com.aspha.toyota.cwidgets.VerticalSpaceItemDecoration;
 import com.aspha.toyota.cwidgets.customfonts.MyTextView;
@@ -25,18 +23,17 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 /**
- * Created by Kajiva Kinsley on 2/13/2018.
+ * Created by Kajiva Kinsley on 2/14/2018.
  */
 
-public class Fragements_services extends Fragment {
+public class Fragment_partsAftersales extends Fragment {
     private View layout;
     private MyTextView recycViewStatus;
     private RecyclerView recycler_view;
     private RecyclerGarageList mAdapter;
     private final static int VERTICAL_ITEM_SPACE = 4;//14
     private Realm realm;
-    private RealmResults <DBGarage> resultsGarage;
-    private RealmResults <DBService> resultsGarage1;
+    private RealmResults<DBGarage> resultsGarage;
 
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
@@ -44,7 +41,17 @@ public class Fragements_services extends Fragment {
         realm = Realm.getDefaultInstance ();
         resultsGarage  = realm.where(DBGarage.class).sort("ID", Sort.DESCENDING).findAll ();
     }
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        layout = inflater.inflate( R.layout.fragment_parts_aftersales, container, false);
+        initViews();
+        setViewsValues();
+        initListerners();
 
+
+        return layout;
+    }
     @Override
     public void onDestroy () {
         super.onDestroy ();
@@ -53,31 +60,18 @@ public class Fragements_services extends Fragment {
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        layout = inflater.inflate( R.layout.fragmen_services, container, false);
-        initViews();
-        setViewsValues();
-        initListerners();
-
-
-        return layout;
-    }
-
     private void initListerners () {
         recycler_view.addOnItemTouchListener(new MyRecyclerItemClickListener (getContext (), (view, position) -> {
             DBGarage feeditem = resultsGarage.get ( position );
 
             startActivity(new Intent (
-                    getContext (), RequestService.class)
-                    .putExtra("frag", "Fragment_BookService")
-                    .putExtra("id_", feeditem.getID ())
+                            getContext (), RequestService.class)
+                            .putExtra("frag", "Fragment_partsAftersales")
+                            .putExtra("id_", feeditem.getID ())
                     /*.putExtra("regNumber", feeditem.getRegNumber ())*/
             );
         }));
     }
-
     private void setViewsValues () {
         mAdapter = new RecyclerGarageList ( resultsGarage );
         if(resultsGarage.size ()==0){
@@ -90,7 +84,6 @@ public class Fragements_services extends Fragment {
         }
 
     }
-
     private void initViews () {
         recycler_view = layout.findViewById ( R.id.recyclerview );
 
@@ -101,5 +94,4 @@ public class Fragements_services extends Fragment {
 
 
     }
-
 }

@@ -21,7 +21,7 @@ import static com.aspha.toyota.DBAccess.CRUD.vehicleExists;
 
 public class AddVehicle extends BaseActivity {
 private Context  context = AddVehicle.this;
-private MyEditText modelName,RegNumber;
+private MyEditText modelName,RegNumber ,chasisNumber , engineNumber , mileage;;
 private Button btnAdd , btnCancel;
     private SeeTastyToast toasty;
     private ProgressBar topProgressBar, downProgressBar;
@@ -45,6 +45,9 @@ private Button btnAdd , btnCancel;
         RegNumber = findViewById ( R.id.RegNumber );
         btnAdd = findViewById ( R.id.btnAdd );
         btnCancel = findViewById ( R.id.btnCancel );
+        chasisNumber = findViewById ( R.id.chasisNumber );
+        engineNumber = findViewById ( R.id.engineNumber );
+        mileage = findViewById ( R.id.mileage );
 
         topProgressBar = findViewById ( R.id.top_progressBar );
         downProgressBar = findViewById ( R.id.down_progressBar );
@@ -64,6 +67,9 @@ private Button btnAdd , btnCancel;
         btnAdd.setOnClickListener ( er->{
             final String modelName_ = modelName.getText ().toString ().trim ();
             final String RegNumber_ = RegNumber.getText ().toString ().trim ();
+            final String chasisNumber_ = chasisNumber.getText ().toString ().trim ();
+            final String engineNumber_ = engineNumber.getText ().toString ().trim ();
+            final String mileage_ = mileage.getText ().toString ().trim ();
 
             if ( modelName_.isEmpty () ) {
                 modelName.setError ( "Model Name can't be empty" );
@@ -73,13 +79,25 @@ private Button btnAdd , btnCancel;
                 RegNumber.setError ( "Registration Number can't be empty" );
                 return;
             }
+            if ( chasisNumber_.isEmpty () ) {
+                chasisNumber.setError ( "Chasis Number can't be empty" );
+                return;
+            }
+            if ( engineNumber_.isEmpty () ) {
+                engineNumber.setError ( "Engine Number can't be empty" );
+                return;
+            }
+            if ( mileage_.isEmpty () ) {
+                mileage.setError ( "Mileage can't be empty" );
+                return;
+            }
             showProgressDialog(true);
             showProgressDialog(false);
             if(vehicleExists(RegNumber_)){
                 new NifftyDialogs ( context ).messageOkError ( "Vehicle Exists" ,"There is a vehicle that already has that information !");
             }else{
                 toasty.ToastSuccess ( "Saved" );
-                saveVehicle(modelName_ , RegNumber_ , preffs.getUSER_EMAIL ());
+                saveVehicle(modelName_ , RegNumber_ , preffs.getUSER_EMAIL () ,chasisNumber_ , engineNumber_ , mileage_);
                 onBackPressed ();
             }
 
