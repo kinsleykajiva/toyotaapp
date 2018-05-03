@@ -9,7 +9,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:lines="1"
+            android:lines="3"
             android:layout_margin="15dp"
             android:text="20/12/2017 "
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -18,20 +18,21 @@
             android:textStyle="normal|bold"
             />
     <com.aspha.toyota.cwidgets.customfonts.MyTextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="1dp"
-            android:ellipsize="end"
-            android:lines="2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="5dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="1dp"
+        android:ellipsize="end"
+        android:lines="4"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="5dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
 
-            android:text="Nuptias nocere, tanquam germanus vita.Galatae, musa, et omnia.34*C"
+        android:text="Nuptias nocere, tanquam germanus vita.Galatae, musa, et omnia.34*C"
 
-            />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"/>
     <View
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"

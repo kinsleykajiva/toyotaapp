@@ -3,13 +3,16 @@ package com.aspha.toyota.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.aspha.toyota.DBAccess.Preffs;
 import com.aspha.toyota.R;
@@ -19,6 +22,7 @@ import com.aspha.toyota.mMessages.SeeTastyToast;
 
 import static com.aspha.toyota.DBAccess.CRUD.isUserFound;
 import static com.aspha.toyota.mBuildConfigs.Utils.isvalidEmail;
+import static com.aspha.toyota.mNetWorks.NetGet.loginNet;
 
 public class LogIn extends BaseActivity {
     private ProgressBar topProgressBar, downProgressBar;
@@ -84,6 +88,7 @@ public class LogIn extends BaseActivity {
         }
     }
 
+    
     @Override
     protected void initListerners () {
         btnBacktoSignUp.setOnClickListener ( ve->startActivity ( new Intent ( this , SignIn.class ) ));
@@ -108,19 +113,42 @@ public class LogIn extends BaseActivity {
             btnBacktoSignUp.setEnabled ( false );
             showProgressDialog(true);
 
-            showProgressDialog(false);
-            btnLogin.setEnabled ( true );
-            btnBacktoSignUp.setEnabled ( true );
+            new AsyncTask<Void, Void, String> () {
 
-            if(isUserFound(email_ , password_)){
-                preffs.setLogStatus ( true );
-                preffs.setUSER_EMAIL ( email_ );
-                clearAllActivities(context ,  MainActivity.class);
+                @Override
+                protected String doInBackground(Void... voids) {
+                    return loginNet(email_, password_);
+                }
 
-            }else{
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    Log.e("xxx", "onPostExecute: " + s);
+                    showProgressDialog(false);
+                    if (s.equals("found")) {
+                        preffs.setLogStatus(true);
+                        preffs.setUSER_EMAIL(email_);
+                        clearAllActivities(context, MainActivity.class);
+                    }
+                    if (s.equals("unfound")) {
+                        new NifftyDialogs(context).messageOkError("Log in Error", "Try again or register !");
+                       Toast.makeText(LogIn.this, "Failed to Save", Toast.LENGTH_SHORT).show();
 
-                new NifftyDialogs ( context ).messageOkError ( "Log in Error" ,"Try again or register !");
-            }
+                    }
+                   
+                    if (s.isEmpty()) {
+                        new NifftyDialogs(LogIn.this).messageOkError("Connection Failed", "try again");
+                        //   Toast.makeText ( SignIn.this, "Connection Failed , Try again", Toast.LENGTH_SHORT ).show ();
+                    }
+                }
+
+            }.execute();
+
+           
+            // }else{
+
+            //     new NifftyDialogs ( context ).messageOkError ( "Log in Error" ,"Try again or register !");
+            // }
 
         } );
     }

@@ -2,12 +2,13 @@ package com.aspha.toyota.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
+import  java.util.List;
 import com.aspha.toyota.DBAccess.DBEvents;
 import com.aspha.toyota.R;
 import com.aspha.toyota.cwidgets.MyRecyclerItemClickListener;
@@ -16,6 +17,8 @@ import com.aspha.toyota.cwidgets.customfonts.MyTextView;
 import com.aspha.toyota.mAdapaters.EventsListRecycler;
 import com.aspha.toyota.mAdapaters.RecyclerGarageList;
 import com.aspha.toyota.mMessages.SeeTastyToast;
+import com.aspha.toyota.mNetWorks.NetGet;
+
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -27,6 +30,7 @@ public class EventsList extends BaseActivity {
     private EventsListRecycler mAdapter;
     private Realm realm;
     private RealmResults<DBEvents > results;
+    private List<DBEvents> eventslist;
     private final static int VERTICAL_ITEM_SPACE = 4;//14
     private Context context = EventsList.this;
     private SeeTastyToast toasty;
@@ -38,8 +42,22 @@ public class EventsList extends BaseActivity {
         initViews ();
         initListerners ();
         setViewsValues ();
+        java.util.List<String> asd;
     }
-
+    private void getAllEvents(){
+        new AsyncTask<Void,Void,List<DBEvents>> (){
+            @Override
+            public List<DBEvents> doInBackground(Void... parms){
+                return NetGet.fetchAllEvents();
+            }
+            
+        @Override
+        protected void onPostExecute (List<DBEvents> s) {
+            mAdapter = new EventsListRecycler (context, results );
+            recycler_view.setAdapter(mAdapter);
+        }
+        }.execute();
+    }
     @Override
     protected void initViews () {
         getSupportActionBar().setTitle ( "Events" );

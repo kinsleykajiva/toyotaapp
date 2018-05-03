@@ -2,6 +2,7 @@ package com.aspha.toyota.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.aspha.toyota.DBAccess.Preffs;
 import com.aspha.toyota.R;
@@ -18,6 +20,7 @@ import com.aspha.toyota.mMessages.SeeTastyToast;
 
 import static com.aspha.toyota.DBAccess.CRUD.saveVehicle;
 import static com.aspha.toyota.DBAccess.CRUD.vehicleExists;
+import static com.aspha.toyota.mNetWorks.NetGet.addVehicleNet;
 
 public class AddVehicle extends BaseActivity {
 private Context  context = AddVehicle.this;
@@ -70,6 +73,7 @@ private Button btnAdd , btnCancel;
             final String chasisNumber_ = chasisNumber.getText ().toString ().trim ();
             final String engineNumber_ = engineNumber.getText ().toString ().trim ();
             final String mileage_ = mileage.getText ().toString ().trim ();
+            String email = preffs.getUSER_EMAIL();
 
             if ( modelName_.isEmpty () ) {
                 modelName.setError ( "Model Name can't be empty" );
@@ -92,14 +96,43 @@ private Button btnAdd , btnCancel;
                 return;
             }
             showProgressDialog(true);
-            showProgressDialog(false);
-            if(vehicleExists(RegNumber_)){
-                new NifftyDialogs ( context ).messageOkError ( "Vehicle Exists" ,"There is a vehicle that already has that information !");
-            }else{
-                toasty.ToastSuccess ( "Saved" );
-                saveVehicle(modelName_ , RegNumber_ , preffs.getUSER_EMAIL () ,chasisNumber_ , engineNumber_ , mileage_);
-                onBackPressed ();
-            }
+          
+            new AsyncTask<Void,Void,String> (){
+                @Override
+                protected String doInBackground(Void... voids) {
+                    return addVehicleNet(modelName_ , RegNumber_, email,chasisNumber_,engineNumber_ , mileage_);
+                }
+                 @Override
+                protected void onPostExecute (String s) {
+                    showProgressDialog(false);
+                    if(s.equals("done")){
+                        toasty.ToastSuccess("Saved");
+                        saveVehicle(modelName_, RegNumber_, preffs.getUSER_EMAIL(), chasisNumber_, engineNumber_,
+                                mileage_);
+                        onBackPressed();
+                    
+                        
+                    }
+                     if (s.equals("failed")) {
+                        new NifftyDialogs(context).messageOkError("Connection Failed", "Failed to Save,try again");
+                        Toast.makeText(context, "Failed to Save", Toast.LENGTH_SHORT).show();
+
+                    }
+                    if (s.equals("found")) {
+                        new NifftyDialogs(context).messageOkError("Vehicle Exists",
+                                "There is a vehicle that already has that information !");
+
+                    }
+                    if (s.isEmpty()) {
+                        new NifftyDialogs(context).messageOkError("Connection Failed", "try again");
+                        // Toast.makeText ( SignIn.this, "Connection Failed , Try again",
+                        // Toast.LENGTH_SHORT ).show ();
+                    }
+                }
+
+            }.execute();
+           
+           
 
         } );
     }

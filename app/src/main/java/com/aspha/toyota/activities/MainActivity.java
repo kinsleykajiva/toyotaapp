@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initObjects () {
         preffs = new Preffs ( context );
 
-
         if ( ! preffs.checkIfLoggedIn () ) {
             startActivity ( new Intent ( context, LogIn.class ) );
             finish ();
@@ -149,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             initPermissions ();
             Intent callIntent = new Intent(Intent.ACTION_CALL);
 
-            callIntent.setData( Uri.parse("tel:737531075"));//change the number
+            callIntent.setData( Uri.parse("tel:0773446872"));//change the number
 
             startActivity(callIntent);
 
@@ -158,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             initPermissions ();
             Intent callIntent = new Intent(Intent.ACTION_CALL);
 
-            callIntent.setData( Uri.parse("tel:737531075"));//change the number
+            callIntent.setData( Uri.parse("tel:0773446872"));//change the number
 
             startActivity(callIntent);
         } );
@@ -247,6 +246,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if ( id == R.id.nav_events ) {
             startActivity ( new Intent ( context, EventsList.class ) );
         }
+        /*if ( id == R.id.nav_reports_vehicles ) {
+            startActivity ( new Intent ( context, ReportsMaker.class ) );
+        }
+        if ( id == R.id.nav_reports_logIns ) {
+            startActivity ( new Intent ( context, ReportsMaker.class ) );
+        }
+        if ( id == R.id.nav_reports_enquiries ) {
+            startActivity ( new Intent ( context, ReportsMaker.class ) );
+        }
+        if ( id == R.id.nav_reports_calls ) {
+            startActivity ( new Intent ( context, ReportsMaker.class ) );
+        }*/
+
         if ( drawer == null ) {
             drawer = findViewById ( R.id.drawer_layout );
         }

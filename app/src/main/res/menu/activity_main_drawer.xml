@@ -17,7 +17,23 @@
             android:id="@+id/nav_log"
             android:icon="@drawable/ic_input_black_24dp"
             android:title="@string/login"/>
-
+        <!--<item
+            android:id="@+id/nav_reports_vehicles"
+            android:icon="@drawable/ic_directions_car_black_24dp"
+            android:title="Vehicles Report"/>
+        <item
+            android:id="@+id/nav_reports_logIns"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="LogIn Report"/>
+        <item
+            android:id="@+id/nav_reports_enquiries"
+            android:icon="@drawable/ic_flip_to_front_black_24dp"
+            android:title="Enquiries Report"/>
+        <item
+            android:id="@+id/nav_reports_calls"
+            android:icon="@drawable/ic_call_black_24dp"
+            android:title="Calls Report"/>
+-->
     </group>
 
 </menu>

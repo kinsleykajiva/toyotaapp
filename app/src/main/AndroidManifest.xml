@@ -148,6 +148,8 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
+        <activity android:name=".activities.ReportsMaker">
+        </activity>
     </application>
 
 </manifest>

@@ -11,7 +11,13 @@ public class DBProfile  extends RealmObject{
     private String name , surname , cellNumber , email , address;
 
 
-
+    public DBProfile (String name, String surname, String cellNumber, String email, String address) {
+        this.name = name;
+        this.surname = surname;
+        this.cellNumber = cellNumber;
+        this.email = email;
+        this.address = address;
+    }
 
     public DBProfile () {
     }

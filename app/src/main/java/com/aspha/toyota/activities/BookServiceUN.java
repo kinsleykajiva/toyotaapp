@@ -116,7 +116,7 @@ public class BookServiceUN extends BaseActivity {
         try {
             SmsManager smsManager = SmsManager.getDefault ();
 
-            smsManager.sendTextMessage ( "0732446872", null, message, null, null );
+            smsManager.sendTextMessage ( "+263773446872", null, message, null, null );
 
             toasty.ToastSuccess ( "Booked. Message Sent." );
             clearAllActivities ( context, MainActivity.class );

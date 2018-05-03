@@ -7,7 +7,15 @@ Hardware Specifications
 Functional requirements
 Non-functional requirements
 
+Database Design 
+
 4.1 Introduction
 4.2 System design
 Program Pseudo Code
-Adding a new User’s details, 
+Adding a new User’s details,
+
+
+Security Design
+
+
+interview questions

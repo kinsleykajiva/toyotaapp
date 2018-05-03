@@ -42,7 +42,7 @@ public class BookService extends BaseActivity {
     private Button btnBook;
     private String message;
     private String regNumber;
-    private static final String TOYOTA_LINK="+263772142207";
+    private static final String TOYOTA_LINK="0773446872";
     public static final int PERMISSION_REQUEST_CODE=100;
     private TextView infoV;
 
@@ -77,7 +77,7 @@ public class BookService extends BaseActivity {
         try {
             SmsManager smsManager = SmsManager.getDefault();
 
-            smsManager.sendTextMessage("0732446872", null,message, null, null);
+            smsManager.sendTextMessage("+263773446872", null,message, null, null);
             saveBooking(preffs.getUSER_EMAIL () ,regNumber );
             toasty.ToastSuccess ( "Booked. Message Sent." );
             clearAllActivities( context , MainActivity.class );

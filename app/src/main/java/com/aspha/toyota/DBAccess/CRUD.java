@@ -98,7 +98,7 @@ public class CRUD {
             rw.setAddress ( address );
             rw.setCellNumber ( celle );
             rw.setName ( fullname );
-            rw.setSurname ( fullname );
+            rw.setSurname ( surname );
 
             rw.setID (
                     (results.isEmpty () && results.size () < 1) ? 0 : (results.max ( "ID" ).intValue () + 1)
