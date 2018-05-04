@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.aspha.toyota.DBAccess.Preffs;
 import com.aspha.toyota.R;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 
 import static android.Manifest.permission.CALL_PHONE;
@@ -115,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     private void initObjects () {
         preffs = new Preffs ( context );
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        //Log.e ( "xxx", "initObjects: token"+refreshedToken  );
 
         if ( ! preffs.checkIfLoggedIn () ) {
             startActivity ( new Intent ( context, LogIn.class ) );

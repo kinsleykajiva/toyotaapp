@@ -32,11 +32,7 @@ public class MyJobService extends JobService {
         new Thread( () -> {
             List<DBEvents> ev = fetchEvent(jobParameters.getExtras ().getString  ( "eventid" ));
             if(!ev.isEmpty ()){
-
                 saveEvent(   ev  );
-
-
-
                 sendNotification(MyJobService.this , ev.get ( 0 ).getTitle () , ev.get ( 0 ).getDescription () ,ev.get ( 0 ).getId ()+"");
                 jobFinished(jobParameters, false);
             }
